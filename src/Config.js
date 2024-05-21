@@ -1,5 +1,5 @@
 function Config(apiKey) {
-  this.apiBaseUrl = 'http://api.localhost';
+  this.apiBaseUrl = 'https://api.payrexhq.com';
   this.apiKey = apiKey;
 }
 
