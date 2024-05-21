@@ -1,6 +1,11 @@
 const axios = require('axios');
+const qs = require('qs');
 
 const ApiResource = require('./ApiResource');
+const RequestInvalidError = require('./errors/RequestInvalidError');
+const AuthenticationInvalidError = require('./errors/AuthenticationInvalidError');
+const ResourceNotFoundError = require('./errors/ResourceNotFoundError');
+const BaseError = require('./errors/BaseError');
 
 function HttpClient(apiKey, baseUrl) {
   this.apiKey = apiKey;
@@ -21,20 +26,30 @@ HttpClient.prototype.request = async function ({ path, method, payload }) {
 
   let data = null;
   if (method === 'post' || method === 'put') {
-    data = JSON.stringify(payload);
+    data = qs.stringify(payload, { arrayFormat: 'brackets' });
   }
 
-  const response = await axios.request({
-    method: method,
-    url: url,
-    auth: auth,
-    headers: headers,
-    data: data,
-  });
-
-  // TODO: Implement error handling
-
-  return new ApiResource(response.data);
+  try {
+    const response = await axios.request({
+      method: method,
+      url: url,
+      auth: auth,
+      headers: headers,
+      data: data,
+    });
+  
+    return new ApiResource(response.data);
+  } catch (error) {
+    if (error.response.status === 400) {
+      throw new RequestInvalidError(error.response.data);
+    } else if (error.status === 401) {
+      throw new AuthenticationInvalidError(error.response.data);
+    } else if (error.status === 404) {
+      throw new ResourceNotFoundError(error.response.data);
+    } else {
+      throw new BaseError(error.response.data);
+    }
+  }
 };
 
 module.exports = HttpClient;
