@@ -7,7 +7,7 @@ function BaseService(client) {
   );
 }
 
-BaseService.prototype.request = function({ path, method, payload = null }) {
+BaseService.prototype.request = function ({ path, method, payload = null }) {
   return this.httpClient.request({
     method: method,
     path: path,

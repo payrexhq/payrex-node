@@ -1,5 +1,5 @@
 function PaymentIntentEntity(apiResource) {
-  data = apiResource.data;
+  const data = apiResource.data;
 
   this.id = data.id;
   this.resource = data.resource;

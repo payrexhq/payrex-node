@@ -6,11 +6,11 @@ function PaymentIntentService(client) {
   this.path = 'payment_intents';
 }
 
-PaymentIntentService.prototype.retrieve = function(id) {
+PaymentIntentService.prototype.retrieve = function (id) {
   return this.request({
     path: `${this.path}/${id}`,
     method: 'get',
-  }).then(function(response) {
+  }).then(function (response) {
     return new PaymentIntentEntity(response);
   });
 };

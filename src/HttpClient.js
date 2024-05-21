@@ -7,7 +7,7 @@ function HttpClient(apiKey, baseUrl) {
   this.baseUrl = baseUrl;
 }
 
-HttpClient.prototype.request = async function({ path, method, payload }) {
+HttpClient.prototype.request = async function ({ path, method, payload }) {
   const url = `${this.baseUrl}/${path}`;
 
   const auth = {
@@ -16,7 +16,7 @@ HttpClient.prototype.request = async function({ path, method, payload }) {
   };
 
   const headers = {
-    'Content-Type': 'application/x-www-form-urlencoded'
+    'Content-Type': 'application/x-www-form-urlencoded',
   };
 
   let data = null;
@@ -24,20 +24,17 @@ HttpClient.prototype.request = async function({ path, method, payload }) {
     data = JSON.stringify(payload);
   }
 
-  try {
-    const response = await axios.request({
-      method: method,
-      url: url,
-      auth: auth,
-      headers: headers,
-      data: data,
-    });
+  const response = await axios.request({
+    method: method,
+    url: url,
+    auth: auth,
+    headers: headers,
+    data: data,
+  });
 
-    return new ApiResource(response.data);
-  } catch (error) {
-    // TODO: Implement error handling
-    throw error;
-  }
+  // TODO: Implement error handling
+
+  return new ApiResource(response.data);
 };
 
 module.exports = HttpClient;
