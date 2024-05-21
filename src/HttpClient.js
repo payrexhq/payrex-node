@@ -37,7 +37,7 @@ HttpClient.prototype.request = async function ({ path, method, payload }) {
       headers: headers,
       data: data,
     });
-  
+
     return new ApiResource(response.data);
   } catch (error) {
     if (error.response.status === 400) {
