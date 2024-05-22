@@ -6,7 +6,7 @@ PayRex Node library provides Node applications an easy access to the PayRex API.
 
 Node 12 or higher.
 
-## Gems
+## Installation
 
 If you want to use the package, run the following command:
 
