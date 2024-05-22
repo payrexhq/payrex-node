@@ -60,3 +60,17 @@ payrex.paymentIntents.create({
     console.error(error.errors);
   });
 ```
+
+## Verify webhook signature
+
+```js
+try {
+  payload = '{"id":"evt_...","resource":"event","type":"payment_intent.succeeded","data":{...';
+  signatureHeader = 't=1715236958,te=,li=...';
+  webhookSecretKey = 'whsk_...';
+
+  payrex.webhooks.parseEvent(payload, signatureHeader, webhookSecretKey);
+} catch (error) {
+  // Handle invalid signature
+}
+```
