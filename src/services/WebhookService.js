@@ -1,7 +1,11 @@
+const crypto = require('crypto');
 const BaseService = require('./BaseService');
 const WebhookEntity = require('../entities/WebhookEntity');
 const ListingEntity = require('../entities/ListingEntity');
 const ApiResource = require('../ApiResource');
+const EventEntity = require('../entities/EventEntity');
+const ValueUnexpectedError = require('../errors/ValueUnexpectedError');
+const SignatureInvalidError = require('../errors/SignatureInvalidError');
 
 function WebhookService(client) {
   BaseService.call(this, client);
@@ -80,6 +84,43 @@ WebhookService.prototype.delete = function (id) {
   }).then(function (response) {
     return new WebhookEntity(response);
   });
+};
+
+WebhookService.prototype.parseEvent = function (
+  payload,
+  signatureHeader,
+  webhookSecretKey
+) {
+  if (typeof signatureHeader !== 'string') {
+    throw new ValueUnexpectedError('The signature must be a string.');
+  }
+
+  const signatureArray = signatureHeader.split(',');
+
+  if (signatureArray.length < 3) {
+    throw new ValueUnexpectedError(
+      `The format of signature ${signatureHeader} is invalid.`
+    );
+  }
+
+  const timestamp = signatureArray[0].split('=')[1];
+  const testModeSignature = signatureArray[1].split('=')[1];
+  const liveModeSignature = signatureArray[2].split('=')[1];
+
+  const comparisonSignature = liveModeSignature || testModeSignature;
+
+  const computedHash = crypto
+    .createHmac('sha256', webhookSecretKey)
+    .update(`${timestamp}.${payload}`)
+    .digest('hex');
+
+  if (computedHash !== comparisonSignature) {
+    throw new SignatureInvalidError('The signature is invalid.');
+  }
+
+  const apiResource = new ApiResource(JSON.parse(payload));
+
+  return new EventEntity(apiResource);
 };
 
 Object.setPrototypeOf(WebhookService.prototype, BaseService.prototype);
