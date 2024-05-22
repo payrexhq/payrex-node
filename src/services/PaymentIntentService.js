@@ -6,6 +6,26 @@ function PaymentIntentService(client) {
   this.path = 'payment_intents';
 }
 
+PaymentIntentService.prototype.capture = function (id, payload) {
+  return this.request({
+    path: `${this.path}/${id}/capture`,
+    payload: payload,
+    method: 'post',
+  }).then(function (response) {
+    return new PaymentIntentEntity(response);
+  });
+};
+
+PaymentIntentService.prototype.create = function (payload) {
+  return this.request({
+    path: this.path,
+    payload: payload,
+    method: 'post',
+  }).then(function (response) {
+    return new PaymentIntentEntity(response);
+  });
+};
+
 PaymentIntentService.prototype.retrieve = function (id) {
   return this.request({
     path: `${this.path}/${id}`,
