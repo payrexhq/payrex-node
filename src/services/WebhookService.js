@@ -34,9 +34,9 @@ WebhookService.prototype.list = function (payload) {
     payload: payload,
     method: 'get',
   }).then(function (response) {
-    const sessionsData = response.data.data;
+    const webhooksData = response.data.data;
 
-    const data = sessionsData.map((session) => {
+    const data = webhooksData.map((session) => {
       const apiResource = new ApiResource(session);
 
       return new WebhookEntity(apiResource);
