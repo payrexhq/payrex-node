@@ -40,11 +40,15 @@ HttpClient.prototype.request = async function ({ path, method, payload }) {
 
     return new ApiResource(response.data);
   } catch (error) {
+    if (error.response === undefined) {
+      throw new Error(error);
+    }
+
     if (error.response.status === 400) {
       throw new RequestInvalidError(error.response.data);
-    } else if (error.status === 401) {
+    } else if (error.response.status === 401) {
       throw new AuthenticationInvalidError(error.response.data);
-    } else if (error.status === 404) {
+    } else if (error.response.status === 404) {
       throw new ResourceNotFoundError(error.response.data);
     } else {
       throw new BaseError(error.response.data);
