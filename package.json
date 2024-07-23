@@ -1,6 +1,6 @@
 {
   "name": "payrex-node",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "PayRex Node JS Library",
   "keywords": [
     "payrex",
