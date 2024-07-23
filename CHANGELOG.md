@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.3] - 2024-07-23
+
+- Move the deprecated capture_type attribute.
+- Add the new payment_method_options attribute.
+
 ## [0.1.2] - 2024-05-23
 
 - Update error handling.
