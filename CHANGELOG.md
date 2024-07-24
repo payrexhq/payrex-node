@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.5] - 2024-07-24
+
+- Finalize the checkout session endpoints.
+- Remove the resource attribute from all resources. This is the standard implementation across all PayRex SDKs.
+
 ## [0.1.4] - 2024-07-23
 
 - Move the deprecated capture_type attribute.

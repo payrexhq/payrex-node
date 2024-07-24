@@ -2,7 +2,6 @@ function PaymentIntentEntity(apiResource) {
   const data = apiResource.data;
 
   this.id = data.id;
-  this.resource = data.resource;
   this.amount = data.amount;
   this.clientSecret = data.client_secret;
   this.currency = data.currency;

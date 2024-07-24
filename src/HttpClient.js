@@ -1,11 +1,11 @@
 const axios = require('axios');
-const qs = require('qs');
 
 const ApiResource = require('./ApiResource');
 const RequestInvalidError = require('./errors/RequestInvalidError');
 const AuthenticationInvalidError = require('./errors/AuthenticationInvalidError');
 const ResourceNotFoundError = require('./errors/ResourceNotFoundError');
 const BaseError = require('./errors/BaseError');
+const Parameter = require('./helpers/Parameter');
 
 function HttpClient(apiKey, baseUrl) {
   this.apiKey = apiKey;
@@ -25,8 +25,9 @@ HttpClient.prototype.request = async function ({ path, method, payload }) {
   };
 
   let data = null;
+
   if (method === 'post' || method === 'put') {
-    data = qs.stringify(payload, { arrayFormat: 'brackets' });
+    data = Parameter.encode(payload);
   }
 
   try {

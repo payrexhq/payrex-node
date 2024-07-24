@@ -2,7 +2,6 @@ function WebhookEntity(apiResource) {
   const data = apiResource.data;
 
   this.id = data.id;
-  this.resource = data.resource;
   this.secretKey = data.secret_key;
   this.status = data.status;
   this.description = data.description;

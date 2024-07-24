@@ -2,7 +2,6 @@ function RefundEntity(apiResource) {
   const data = apiResource.data;
 
   this.id = data.id;
-  this.resource = data.resource;
   this.amount = data.amount;
   this.currency = data.currency;
   this.livemode = data.livemode;
