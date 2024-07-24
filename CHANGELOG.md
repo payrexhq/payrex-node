@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.6] - 2024-07-24
+
+- Adjust building of parameter query due to changes in checkout session endpoints.
+
 ## [0.1.5] - 2024-07-24
 
 - Finalize the checkout session endpoints.

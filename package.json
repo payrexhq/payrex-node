@@ -1,6 +1,6 @@
 {
   "name": "payrex-node",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "PayRex Node JS Library",
   "keywords": [
     "payrex",
@@ -30,7 +30,8 @@
     "prettier": "^3.2.5"
   },
   "dependencies": {
-    "axios": "^1.6.8"
+    "axios": "^1.6.8",
+    "qs": "^6.12.1"
   },
   "license": "MIT",
   "scripts": {
