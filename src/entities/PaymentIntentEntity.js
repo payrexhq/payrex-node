@@ -3,6 +3,8 @@ function PaymentIntentEntity(apiResource) {
 
   this.id = data.id;
   this.amount = data.amount;
+  this.amountReceived = data.amount_received;
+  this.amountCapturable = data.amount_capturable;
   this.clientSecret = data.client_secret;
   this.currency = data.currency;
   this.description = data.description;

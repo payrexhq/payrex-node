@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.7] - 2024-07-30
+
+- Add amount_capturable and amount_received for hold then capture partial amount support.
+
 ## [0.1.6] - 2024-07-24
 
 - Adjust building of parameter query due to changes in checkout session endpoints.
