@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const BaseService = require('./BaseService');
 const WebhookEntity = require('../entities/WebhookEntity');
+const DeletedEntity = require('../entities/DeletedEntity');
 const ListingEntity = require('../entities/ListingEntity');
 const ApiResource = require('../ApiResource');
 const EventEntity = require('../entities/EventEntity');
@@ -82,7 +83,7 @@ WebhookService.prototype.delete = function (id) {
     path: `${this.path}/${id}`,
     method: 'delete',
   }).then(function (response) {
-    return new WebhookEntity(response);
+    return new DeletedEntity(response);
   });
 };
 

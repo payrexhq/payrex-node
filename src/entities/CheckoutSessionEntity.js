@@ -1,5 +1,3 @@
-const PaymentIntentEntity = require("./PaymentIntentEntity");
-
 function CheckoutSessionEntity(apiResource) {
   const data = apiResource.data;
 
@@ -11,9 +9,7 @@ function CheckoutSessionEntity(apiResource) {
   this.lineItems = data.line_items;
   this.livemode = data.livemode;
   this.url = data.url;
-  this.paymentIntent = new PaymentIntentEntity({
-    data: data.payment_intent
-  });
+  this.paymentIntent = data.payment_intent;
   this.metadata = data.metadata;
   this.successUrl = data.success_url;
   this.cancelUrl = data.cancel_url;
