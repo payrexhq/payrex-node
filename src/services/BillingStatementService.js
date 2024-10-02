@@ -75,6 +75,15 @@ BillingStatementService.prototype.finalize = function (id) {
   });
 };
 
+BillingStatementService.prototype.send = function (id) {
+  return this.request({
+    path: `${this.path}/${id}/send`,
+    method: 'post',
+  }).then(function () {
+    return null;
+  });
+};
+
 BillingStatementService.prototype.void = function (id) {
   return this.request({
     path: `${this.path}/${id}/void`,
