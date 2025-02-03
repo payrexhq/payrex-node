@@ -3,6 +3,7 @@ function CheckoutSessionEntity(apiResource) {
 
   this.id = data.id;
   this.customerReferenceId = data.customer_reference_id;
+  this.billingDetailsCollection = data.billing_details_collection;
   this.clientSecret = data.client_secret;
   this.status = data.status;
   this.currency = data.currency;
