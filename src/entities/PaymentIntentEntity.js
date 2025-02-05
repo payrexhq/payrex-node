@@ -14,6 +14,7 @@ function PaymentIntentEntity(apiResource) {
   this.paymentMethodId = data.payment_method_id;
   this.paymentMethods = data.payment_methods;
   this.paymentMethodOptions = data.payment_method_options;
+  this.statementDescriptor = data.statement_descriptor;
   this.status = data.status;
   this.nextAction = data.next_action;
   this.returnUrl = data.return_url;
