@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.0] - 2025-02-06
+
+- statement_descriptor support for payment intents.
+- statement_descriptor support for billing statements.
+
 ## [1.0.2] - 2025-02-03
 
 - billing_details_collection support for PayRex Checkout.
