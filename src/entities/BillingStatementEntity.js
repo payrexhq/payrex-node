@@ -14,6 +14,7 @@ function BillingStatementEntity(apiResource) {
   this.livemode = data.livemode;
   this.metadata = data.metadata;
   this.paymentIntent = data.payment_intent;
+  this.statementDescriptor = data.statement_descriptor;
   this.status = data.status;
   this.paymentSettings = data.payment_settings;
   this.customer = data.customer;
