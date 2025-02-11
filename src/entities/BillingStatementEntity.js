@@ -3,6 +3,7 @@ function BillingStatementEntity(apiResource) {
 
   this.id = data.id;
   this.amount = data.amount;
+  this.billingDetailsCollection = data.billing_details_collection;
   this.currency = data.currency;
   this.customerId = data.customer_id;
   this.description = data.description;
