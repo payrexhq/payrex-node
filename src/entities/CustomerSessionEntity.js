@@ -4,9 +4,7 @@ function CustomerSessionEntity(apiResource) {
   this.id = data.id;
   this.customerId = data.customer_id;
   this.clientSecret = data.client_secret;
-  this.merchantId = data.merchant_id;
   this.livemode = data.livemode;
-  this.paymentIntentId = data.payment_intent_id;
   this.components = data.components;
   this.expired = data.expired;
   this.expiredAt = data.expired_at;
