@@ -16,6 +16,16 @@ RefundService.prototype.create = function (payload) {
   });
 };
 
+RefundService.prototype.update = function (id, payload) {
+  return this.request({
+    path: `${this.path}/${id}`,
+    payload: payload,
+    method: 'put',
+  }).then(function (response) {
+    return new RefundEntity(response);
+  });
+};
+
 Object.setPrototypeOf(RefundService.prototype, BaseService.prototype);
 
 module.exports = RefundService;
