@@ -8,6 +8,8 @@ function CustomerSessionEntity(apiResource) {
   this.livemode = data.livemode;
   this.paymentIntentId = data.payment_intent_id;
   this.components = data.components;
+  this.expired = data.expired;
+  this.expiredAt = data.expired_at;
   this.createdAt = data.created_at;
   this.updatedAt = data.updated_at;
 }
