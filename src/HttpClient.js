@@ -26,7 +26,7 @@ HttpClient.prototype.request = async function ({ path, method, payload }) {
 
   let data = null;
 
-  if (method === 'post' || method === 'put') {
+  if (['post', 'put'].includes(method.toLowerCase())) {
     data = qs.stringify(
       payload, 
       {
@@ -36,13 +36,20 @@ HttpClient.prototype.request = async function ({ path, method, payload }) {
   }
 
   try {
-    const response = await axios.request({
+    const requestPayload = {
       method: method,
       url: url,
       auth: auth,
       headers: headers,
-      data: data,
-    });
+    }
+
+    if(['get', 'delete'].includes(method.toLowerCase()) && payload !== null && payload !== undefined) {
+      requestPayload.params = payload
+    } else {
+      requestPayload.data = data
+    }
+
+    const response = await axios.request(requestPayload);
 
     return new ApiResource(response.data);
   } catch (error) {
