@@ -6,6 +6,9 @@
     "payrex",
     "payment processing",
     "credit cards",
+    "gcash",
+    "qrph",
+    "maya",
     "api"
   ],
   "homepage": "https://github.com/payrexhq/payrex-node",
