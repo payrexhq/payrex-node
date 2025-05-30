@@ -15,6 +15,16 @@ PaymentService.prototype.retrieve = function (id) {
   });
 };
 
+PaymentService.prototype.update = function (id, payload) {
+  return this.request({
+    path: `${this.path}/${id}`,
+    payload: payload,
+    method: 'put',
+  }).then(function (response) {
+    return new PaymentEntity(response);
+  });
+};
+
 Object.setPrototypeOf(PaymentService.prototype, BaseService.prototype);
 
 module.exports = PaymentService;
