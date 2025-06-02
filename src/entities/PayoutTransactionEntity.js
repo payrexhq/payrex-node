@@ -3,7 +3,7 @@ function PayoutTransactionEntity(apiResource) {
 
   this.id = data.id;
   this.amount = data.amount;
-  this.payoutId = data.payout_id;
+  this.netAmount = data.net_amount;
   this.transactionType = data.transaction_type;
   this.transactionId = data.transaction_id;
   this.createdAt = data.created_at;
