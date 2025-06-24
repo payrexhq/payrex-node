@@ -9,6 +9,7 @@ function BillingStatementEntity(apiResource) {
   this.description = data.description;
   this.dueAt = data.due_at;
   this.finalizedAt = data.finalized_at;
+  this.billingStatementMerchantName = data.billing_statement_merchant_name;
   this.billingStatementNumber = data.billing_statement_number;
   this.billingStatementUrl = data.billing_statement_url;
   this.lineItems = data.line_items;
