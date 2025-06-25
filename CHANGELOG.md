@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.7.0] - 2025-06-24
+
+- Return billingStatementMerchantName in Billing Statement resource.
+
 ## [1.6.1] - 2025-06-02
 
 - Return net_amount in Payout Transaction resource.
