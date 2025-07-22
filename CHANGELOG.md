@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.7.2] - 2025-07-22
+
+- Support cancel payment intent.
+
 ## [1.7.1] - 2025-07-11
 
 - Support setup_future_usage on Billing Statement.

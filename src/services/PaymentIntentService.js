@@ -6,6 +6,15 @@ function PaymentIntentService(client) {
   this.path = 'payment_intents';
 }
 
+PaymentIntentService.prototype.cancel = function (id) {
+  return this.request({
+    path: `${this.path}/${id}/cancel`,
+    method: 'post',
+  }).then(function (response) {
+    return new PaymentIntentEntity(response);
+  });
+};
+
 PaymentIntentService.prototype.capture = function (id, payload) {
   return this.request({
     path: `${this.path}/${id}/capture`,
