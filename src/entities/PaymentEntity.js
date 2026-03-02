@@ -16,6 +16,7 @@ function PaymentEntity(apiResource) {
   this.customer = data.customer
   this.paymentMethod = data.payment_method
   this.refunded = data.refunded
+  this.pageSession = data.page_session
   this.createdAt = data.created_at;
   this.updatedAt = data.updated_at;
 }
