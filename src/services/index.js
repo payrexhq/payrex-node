@@ -4,6 +4,7 @@ const CheckoutSessionService = require('./CheckoutSessionService');
 const CustomerSessionService = require('./CustomerSessionService');
 const CustomerService = require('./CustomerService');
 const PaymentIntentService = require('./PaymentIntentService');
+const SetupIntentService = require('./SetupIntentService');
 const PaymentService = require('./PaymentService');
 const PayoutService = require('./PayoutService');
 const RefundService = require('./RefundService');
@@ -14,6 +15,7 @@ module.exports = {
   customerSessions: CustomerSessionService,
   payments: PaymentService,
   paymentIntents: PaymentIntentService,
+  setupIntents: SetupIntentService,
   payouts: PayoutService,
   customers: CustomerService,
   billingStatements: BillingStatementService,

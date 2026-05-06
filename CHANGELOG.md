@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.7.5] - 2026-05-06
+
+- Support setup intents
+
 ## [1.7.4] - 2026-04-30
 
 - Update payment intent endpoint.
