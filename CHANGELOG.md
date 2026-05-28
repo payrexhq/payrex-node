@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.7.6] - 2026-05-28
+
+- Support list customer payment methods endpoint.
+- Support delete customer payment method endpoint.
+- Add Payment Method entity.
+
 ## [1.7.5] - 2026-05-06
 
 - Support setup intents

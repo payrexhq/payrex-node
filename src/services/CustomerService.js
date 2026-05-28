@@ -1,5 +1,6 @@
 const BaseService = require('./BaseService');
 const CustomerEntity = require('../entities/CustomerEntity');
+const PaymentMethodEntity = require('../entities/PaymentMethodEntity');
 const DeletedEntity = require('../entities/DeletedEntity');
 const ListingEntity = require('../entities/ListingEntity');
 const ApiResource = require('../ApiResource');
@@ -44,6 +45,33 @@ CustomerService.prototype.list = function (payload) {
     });
 
     return new ListingEntity(data, response.data.has_more);
+  });
+};
+
+CustomerService.prototype.listPaymentMethods = function (id, payload) {
+  return this.request({
+    path: `${this.path}/${id}/payment_methods`,
+    payload: payload,
+    method: 'get',
+  }).then(function (response) {
+    const sessionsData = response.data.data;
+
+    const data = sessionsData.map((session) => {
+      const apiResource = new ApiResource(session);
+
+      return new PaymentMethodEntity(apiResource);
+    });
+
+    return new ListingEntity(data, response.data.has_more);
+  });
+};
+
+CustomerService.prototype.deletePaymentMethod = function (id, payload) {
+  return this.request({
+    path: `${this.path}/${id}/payment_methods/${payload.payment_method_id}`,
+    method: 'delete',
+  }).then(function (response) {
+    return new DeletedEntity(response);
   });
 };
 
