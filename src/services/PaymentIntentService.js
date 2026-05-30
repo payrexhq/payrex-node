@@ -25,6 +25,16 @@ PaymentIntentService.prototype.capture = function (id, payload) {
   });
 };
 
+PaymentIntentService.prototype.attach = function (id, payload) {
+  return this.request({
+    path: `${this.path}/${id}/attach`,
+    payload: payload,
+    method: 'post',
+  }).then(function (response) {
+    return new PaymentIntentEntity(response);
+  });
+};
+
 PaymentIntentService.prototype.update = function (id, payload) {
   return this.request({
     path: `${this.path}/${id}`,
