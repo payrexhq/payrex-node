@@ -2,7 +2,7 @@ function CustomerSessionEntity(apiResource) {
   const data = apiResource.data;
 
   this.id = data.id;
-  this.customerId = data.customer_id;
+  this.customer = data.customer;
   this.clientSecret = data.client_secret;
   this.livemode = data.livemode;
   this.components = data.components;

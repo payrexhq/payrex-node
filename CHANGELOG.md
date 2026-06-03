@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.7.8] - 2026-06-03
+
+Utilize customer instead of customer_id in customer sessions.
+
 ## [1.7.7] - 2026-05-30
 
 - Add attach payment method to payment intent endpoint
